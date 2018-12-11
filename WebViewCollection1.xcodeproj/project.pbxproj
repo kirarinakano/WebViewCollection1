@@ -13,6 +13,7 @@
 		4E8B21A021B65A2100BA5521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E8B219F21B65A2100BA5521 /* Assets.xcassets */; };
 		4E8B21A321B65A2100BA5521 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8B21A121B65A2100BA5521 /* LaunchScreen.storyboard */; };
 		4E8B21AB21B669F900BA5521 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8B21AA21B669F900BA5521 /* WebViewController.swift */; };
+		CA7DAACF21BF73AD00045B6E /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = CA7DAACE21BF73AD00045B6E /* readme.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4E8B21A221B65A2100BA5521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E8B21A421B65A2100BA5521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E8B21AA21B669F900BA5521 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		CA7DAACE21BF73AD00045B6E /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		4E8B218C21B65A2000BA5521 = {
 			isa = PBXGroup;
 			children = (
+				CA7DAACE21BF73AD00045B6E /* readme.md */,
 				4E8B219721B65A2000BA5521 /* WebViewCollection1 */,
 				4E8B219621B65A2000BA5521 /* Products */,
 			);
@@ -127,6 +130,7 @@
 			files = (
 				4E8B21A321B65A2100BA5521 /* LaunchScreen.storyboard in Resources */,
 				4E8B21A021B65A2100BA5521 /* Assets.xcassets in Resources */,
+				CA7DAACF21BF73AD00045B6E /* readme.md in Resources */,
 				4E8B219E21B65A2000BA5521 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +291,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3QMURX28T4;
 				INFOPLIST_FILE = WebViewCollection1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +310,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3QMURX28T4;
 				INFOPLIST_FILE = WebViewCollection1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

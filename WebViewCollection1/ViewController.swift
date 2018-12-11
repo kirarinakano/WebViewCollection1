@@ -25,7 +25,7 @@ class ViewController: UIViewController{
         urlArray = ["https://www.sejuku.net/blog/33867",
                     "https://qiita.com/search?utf8=%E2%9C%93&sort=&q=swift+strong+weak",
                     "https://qiita.com/masa08/items/71c677265ac9fd2d73db",
-                    "http://jazzsasori.hatenablog.com/entry/2014/02/10/231307",
+                    "http://jazzsasori.hatenablog.com/entry/2014/02/10/231307", // MARK: http のページを開くときは ATSの設定が必要なので注意。今はこのページだけひらけないはず
                     "https://qiita.com/narukun/items/326bd50a78cf34371169"]
     }
     
@@ -73,6 +73,10 @@ extension ViewController: UITableViewDelegate{
 
         //画面遷移
         performSegue(withIdentifier: "web", sender: nil)
+        
+        // MARK:  選択を解除するアニメーションを実行して見栄えを良くしよう。UITableViewController を継承している場合は自動でやってくれることなので不要
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
