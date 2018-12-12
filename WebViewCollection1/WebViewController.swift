@@ -9,51 +9,45 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController,WKNavigationDelegate {
+class WebViewController: UIViewController {
     
-    var ActivityIndicator: UIActivityIndicatorView!
-    
+    // MARK:  変数名は　lower camel caseで書こう。
+    //var ActivityIndicator: UIActivityIndicatorView!
+    var activityIndicator: UIActivityIndicatorView!
     var urlString: String! = ""
 
-    @IBOutlet weak var webView:WKWebView!
+    @IBOutlet weak var webView:WKWebView! // MARK:  WKWebViewはStoryboardで初期化できないという情報がWebで散見されたが今は問題ないようだ
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // MARK:  呼び忘れ。StoryBoardにもIndicatorがあり、コードで初期化するかStoryboardで初期化するか決めよう。
+        setIndicator()
         
         //URL型変換
         guard let url = URL(string: urlString) else {
             return
         }
 
-        let req = URLRequest(url: url, cachePolicy: .returnCacheDataDontLoad, timeoutInterval: 100)
+        // MARK: 常にキャッシュを使用し、ないならエラーになるオプション。表示に失敗する原因はこれを指定していたせい😇
+        // .returnCacheDataDontLoad -> https://developer.apple.com/documentation/foundation/nsurlrequest/cachepolicy/returncachedatadontload
+        let req = URLRequest(url: url/*, cachePolicy: .returnCacheDataDontLoad, timeoutInterval: 100*/)
     
         
-        self.webView.load(req)
         webView.navigationDelegate = self
-    }
-    
-    //通信が開始されたときに勝手に呼ばれるデリゲートメソッド
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        
-        ActivityIndicator.startAnimating()
-    }
-    
-    //完了
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        
-        ActivityIndicator.stopAnimating()
+        self.webView.load(req)
     }
     
     func setIndicator() {
         //初期化
-        ActivityIndicator = UIActivityIndicatorView()
+        activityIndicator = UIActivityIndicatorView()
         
         //サイズ
-        ActivityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        ActivityIndicator.center = CGPoint(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2)
-        ActivityIndicator.hidesWhenStopped = true
-        ActivityIndicator.style = .gray
-        self.webView.addSubview(ActivityIndicator)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        activityIndicator.center = CGPoint(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .gray
+        self.webView.addSubview(activityIndicator)
     }
     
     @IBAction func back(_ sender: Any) {
@@ -72,6 +66,21 @@ class WebViewController: UIViewController,WKNavigationDelegate {
     @IBAction func refresh(_ sender: Any) {
         
         webView.reload()
+    }
+    
+}
+
+// MARK:  protocolの実装はextensionにしてfunctionの分類がつきやすくしよう
+extension WebViewController: WKNavigationDelegate{
+    
+    //通信が開始されたときに勝手に呼ばれるデリゲートメソッド
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.startAnimating()
+    }
+    
+    //完了
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
     }
     
 }

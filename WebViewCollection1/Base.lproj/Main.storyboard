@@ -135,7 +135,6 @@
                         <viewLayoutGuide key="safeArea" id="leF-w6-yUE"/>
                     </view>
                     <connections>
-                        <outlet property="indicator" destination="nXn-1s-OKX" id="0jb-cD-jRs"/>
                         <outlet property="webView" destination="yuw-Rx-x7v" id="DBW-GI-77M"/>
                     </connections>
                 </viewController>
